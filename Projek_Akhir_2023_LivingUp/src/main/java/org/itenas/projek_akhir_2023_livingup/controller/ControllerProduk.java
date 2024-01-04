@@ -33,8 +33,8 @@ public class ControllerProduk {
                 + "','" + prdk.getKeterangan()
                 + "','" + prdk.getMaterial()
                 + "'," + prdk.getStok()
-                + "," + "null"
-                + ")";
+                + ",'" + prdk.getFoto()
+                + "')";
         try {
             stm = con.createStatement();
             stm.executeUpdate(query);
@@ -60,6 +60,7 @@ public class ControllerProduk {
                 produk.setKeterangan(rs.getString("Keterangan"));
                 produk.setMaterial(rs.getString("Material"));
                 produk.setStok(rs.getInt("Stok"));
+                produk.setFoto(rs.getBytes("Foto"));
                 listProduk.add(produk);
             }
         } catch (SQLException ex) {
@@ -83,6 +84,7 @@ public class ControllerProduk {
                 produk.setKeterangan(rs.getString("Keterangan"));
                 produk.setMaterial(rs.getString("Material"));
                 produk.setStok(rs.getInt("Stok"));
+                produk.setFoto(rs.getBytes("Foto"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -105,6 +107,7 @@ public class ControllerProduk {
                 produk.setKeterangan(rs.getString("Keterangan"));
                 produk.setMaterial(rs.getString("Material"));
                 produk.setStok(rs.getInt("Stok"));
+                produk.setFoto(rs.getBytes("Foto"));
                 listProduk.add(produk);
             }
         } catch (SQLException ex) {
@@ -128,6 +131,7 @@ public class ControllerProduk {
                 produk.setKeterangan(rs.getString("Keterangan"));
                 produk.setMaterial(rs.getString("Material"));
                 produk.setStok(rs.getInt("Stok"));
+                produk.setFoto(rs.getBytes("Foto"));
                 listProduk.add(produk);
             }
         } catch (SQLException ex) {
@@ -145,8 +149,8 @@ public class ControllerProduk {
                 + "', keterangan = '"+prdk.getKeterangan()
                 + "', material = '"+prdk.getMaterial()
                 + "', stok = "+prdk.getStok()
-                + ", foto = "+ "null"
-                +" where id = '"+ id +"'";
+                + ", foto = '"+ prdk.getFoto()
+                +"' where id = '"+ id +"'";
         try {
             stm = con.createStatement();
             stm.executeUpdate(query);

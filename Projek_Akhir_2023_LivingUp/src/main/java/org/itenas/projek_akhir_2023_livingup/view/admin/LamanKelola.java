@@ -8,6 +8,7 @@ package org.itenas.projek_akhir_2023_livingup.view.admin;
  *
  * @author asust
  */
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -72,7 +73,7 @@ public class LamanKelola extends javax.swing.JFrame {
         txtAKeterangan.setText("");
         txtMaterial.setText("");
         txtPathGambar.setText("");
-        lbl_gambar.setIcon(null);
+        lblGambar.setIcon(null);
         
     }
     
@@ -150,7 +151,6 @@ public class LamanKelola extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         txtHarga = new javax.swing.JTextField();
-        lbl_gambar = new javax.swing.JLabel();
         btnUpload = new javax.swing.JButton();
         txtStok = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -159,6 +159,8 @@ public class LamanKelola extends javax.swing.JFrame {
         txtPancarian = new javax.swing.JTextField();
         cmbKategori = new javax.swing.JComboBox<>();
         btnCari = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        lblGambar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuLamanPelanggan = new javax.swing.JMenu();
         menuItemLamanPelanggan = new javax.swing.JMenuItem();
@@ -266,8 +268,6 @@ public class LamanKelola extends javax.swing.JFrame {
             }
         });
 
-        lbl_gambar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
         btnUpload.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -309,6 +309,27 @@ public class LamanKelola extends javax.swing.JFrame {
             }
         });
 
+        lblGambar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        jDesktopPane1.setLayer(lblGambar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblGambar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblGambar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         menuLamanPelanggan.setText("Menu");
         menuLamanPelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -341,18 +362,9 @@ public class LamanKelola extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(txtPathGambar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnUpload))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,8 +400,18 @@ public class LamanKelola extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMaterial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtStok, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 6, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addGap(18, 18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(txtPathGambar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnUpload)))
+                        .addGap(21, 21, 21)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtPancarian, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,16 +473,16 @@ public class LamanKelola extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(7, 7, 7)
                                 .addComponent(txtPathGambar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnUpload)))
-                        .addGap(21, 21, 21)
+                        .addGap(18, 27, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSave)
                             .addComponent(btnDelete)
@@ -502,7 +524,7 @@ public class LamanKelola extends javax.swing.JFrame {
         produk.setKeterangan(keterangan);
         produk.setWarna(warna);
         produk.setStok(stok);
-        produk.setFoto(null);
+        produk.setFoto(gambar);
 
         boolean status = conProduk.createProduk(produk);
         if (status) {
@@ -530,7 +552,7 @@ public class LamanKelola extends javax.swing.JFrame {
         keterangan = txtAKeterangan.getText();
         material = txtMaterial.getText();
         stok = Integer.parseInt(txtStok.getText());
-
+        
         Produk produk = new Produk();
         produk.setId(id);
         produk.setNama(nama);
@@ -540,7 +562,7 @@ public class LamanKelola extends javax.swing.JFrame {
         produk.setKeterangan(keterangan);
         produk.setWarna(warna);
         produk.setStok(stok);
-        produk.setFoto(null);
+        produk.setFoto(gambar);
 
         boolean status = conProduk.updateProduk(produk,idLama);
         if (status) {
@@ -577,7 +599,28 @@ public class LamanKelola extends javax.swing.JFrame {
         txtAKeterangan.setText(listProduk.get(i).getKeterangan());
         txtMaterial.setText(listProduk.get(i).getMaterial());
         txtStok.setText(model.getValueAt(i, 3).toString());
+        
+        Object imageDataObj = model.getValueAt(i, 5);
 
+        if (imageDataObj != null && imageDataObj instanceof byte[]) {
+            byte[] imageData = (byte[]) imageDataObj;
+
+            // Convert the byte array to an ImageIcon
+            ImageIcon imageIcon = new ImageIcon(imageData);
+
+            // Scale the image to fit lblImage
+            Image scaledImage = imageIcon.getImage().getScaledInstance(lblGambar.getWidth(), lblGambar.getHeight(), Image.SCALE_SMOOTH);
+
+            // Create a new ImageIcon with the scaled image
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+
+            // Set the ImageIcon to lblImage
+            lblGambar.setIcon(scaledImageIcon);
+        } else {
+            // Handle the case where there is no image
+            System.out.println("No image");
+            lblGambar.setIcon(null); // Set lblImage to null or another default image
+        }
     }//GEN-LAST:event_tabelProdukMouseClicked
 
     private void txtPathGambarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPathGambarActionPerformed
@@ -711,6 +754,7 @@ public class LamanKelola extends javax.swing.JFrame {
     private javax.swing.JButton btnUpload;
     private javax.swing.JComboBox<String> cmbKategori;
     private javax.swing.JComboBox<String> cmbRuangan;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -724,7 +768,7 @@ public class LamanKelola extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbl_gambar;
+    private javax.swing.JLabel lblGambar;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JMenuItem menuItemLamanPelanggan;
     private javax.swing.JMenuItem menuItemLogout;
