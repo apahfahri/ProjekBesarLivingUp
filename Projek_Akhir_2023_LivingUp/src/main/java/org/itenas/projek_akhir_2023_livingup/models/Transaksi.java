@@ -8,28 +8,26 @@ package org.itenas.projek_akhir_2023_livingup.models;
  *
  * @author ASUS
  */
-public class Pembelian {
-    private String id;
+public class Transaksi {
+    private String idTransaksi;
     private Produk produk;
     private int jumlahProduk;
-    private double totalBayar;
 
-    public Pembelian() {
+    public Transaksi() {
     }
 
-    public Pembelian(String id, Produk produk, int jumlahProduk, double totalBayar) {
-        this.id = id;
+    public Transaksi(String idTransaksi, Produk produk, int jumlahProduk) {
+        this.idTransaksi = idTransaksi;
         this.produk = produk;
         this.jumlahProduk = jumlahProduk;
-        this.totalBayar = totalBayar;
     }
 
-    public String getId() {
-        return id;
+    public String getIdTransaksi() {
+        return idTransaksi;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdTransaksi(String idTransaksi) {
+        this.idTransaksi = idTransaksi;
     }
 
     public Produk getProduk() {
@@ -47,14 +45,4 @@ public class Pembelian {
     public void setJumlahProduk(int jumlahProduk) {
         this.jumlahProduk = jumlahProduk;
     }
-
-    public double getTotalBayar() {
-        return totalBayar;
-    }
-
-    public void setTotalBayar(double totalBayar) {
-        this.totalBayar = totalBayar;
-    }
-    
-    
 }

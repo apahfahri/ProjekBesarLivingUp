@@ -4,7 +4,9 @@
  */
 package org.itenas.projek_akhir_2023_livingup.view;
 
+import java.awt.Image;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import org.itenas.projek_akhir_2023_livingup.controller.ControllerLogin;
 import org.itenas.projek_akhir_2023_livingup.controller.ControllerProduk;
@@ -79,6 +81,7 @@ public class Ruangan extends javax.swing.JPanel {
         txtStok = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtKeterangan = new javax.swing.JTextArea();
+        lblGambar = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelProduk = new javax.swing.JTable();
         cmbLain = new javax.swing.JComboBox<>();
@@ -157,6 +160,8 @@ public class Ruangan extends javax.swing.JPanel {
         txtKeterangan.setRows(5);
         jScrollPane3.setViewportView(txtKeterangan);
 
+        lblGambar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -170,7 +175,9 @@ public class Ruangan extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(120, 120, 120)
+                .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +223,16 @@ public class Ruangan extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addGap(41, 41, 41))))
         );
 
         tabelProduk.setModel(new javax.swing.table.DefaultTableModel(
@@ -269,7 +281,7 @@ public class Ruangan extends javax.swing.JPanel {
                         .addComponent(lblRuangan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmbLain, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +313,27 @@ public class Ruangan extends javax.swing.JPanel {
         txtKeterangan.setText(listProduk.get(i).getKeterangan());
         txtMaterial.setText(listProduk.get(i).getMaterial());
         txtStok.setText(model.getValueAt(i,3).toString());
+        Object imageDataObj = model.getValueAt(i, 5);
+
+        if (imageDataObj != null && imageDataObj instanceof byte[]) {
+            byte[] imageData = (byte[]) imageDataObj;
+
+            // Convert the byte array to an ImageIcon
+            ImageIcon imageIcon = new ImageIcon(imageData);
+
+            // Scale the image to fit lblImage
+            Image scaledImage = imageIcon.getImage().getScaledInstance(lblGambar.getWidth(), lblGambar.getHeight(), Image.SCALE_SMOOTH);
+
+            // Create a new ImageIcon with the scaled image
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+
+            // Set the ImageIcon to lblImage
+            lblGambar.setIcon(scaledImageIcon);
+        } else {
+            // Handle the case where there is no image
+            System.out.println("No image");
+            lblGambar.setIcon(null); // Set lblImage to null or another default image
+        }
     }//GEN-LAST:event_tabelProdukMouseClicked
 
     private void txtStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStokActionPerformed
@@ -350,6 +383,7 @@ public class Ruangan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblGambar;
     private javax.swing.JLabel lblRuangan;
     private javax.swing.JTable tabelProduk;
     private javax.swing.JTextField txtHarga;

@@ -4,7 +4,9 @@
  */
 package org.itenas.projek_akhir_2023_livingup.view;
 
+import java.awt.Image;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import org.itenas.projek_akhir_2023_livingup.controller.ControllerLogin;
 import org.itenas.projek_akhir_2023_livingup.controller.ControllerProduk;
@@ -19,30 +21,29 @@ public class Semua extends javax.swing.JPanel {
     /**
      * Creates new form Ruangan
      */
-    
     ControllerProduk conProduk = new ControllerProduk();
     public String[] data;
     List<Produk> listProduk;
     private DefaultTableModel model;
-    
+
     public Semua() {
         initComponents();
         model = new DefaultTableModel();
-        
+
         tabelProduk.setModel(model);
-        
+
         model.addColumn("ID");
         model.addColumn("nama");
         model.addColumn("harga");
         model.addColumn("stok");
         loadData();
     }
-    
+
     private void loadData() {
         DefaultTableModel dtm = (DefaultTableModel) tabelProduk.getModel();
-        
+
         dtm.setRowCount(0);
-        
+
         listProduk = conProduk.showProduk();
         data = new String[12];
         for (Produk prdk : listProduk) {
@@ -52,7 +53,7 @@ public class Semua extends javax.swing.JPanel {
             data[3] = Integer.toString(prdk.getStok());
             dtm.addRow(data);
         }
-    } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +81,7 @@ public class Semua extends javax.swing.JPanel {
         txtStok = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtKeterangan = new javax.swing.JTextArea();
+        lblGambar = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelProduk = new javax.swing.JTable();
         txtPancarian = new javax.swing.JTextField();
@@ -160,6 +162,9 @@ public class Semua extends javax.swing.JPanel {
         txtKeterangan.setRows(5);
         jScrollPane3.setViewportView(txtKeterangan);
 
+        lblGambar.setForeground(new java.awt.Color(153, 153, 153));
+        lblGambar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -173,7 +178,9 @@ public class Semua extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(126, 126, 126)
+                .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,11 +226,16 @@ public class Semua extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(177, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addGap(45, 45, 45))))
         );
 
         tabelProduk.setModel(new javax.swing.table.DefaultTableModel(
@@ -318,13 +330,34 @@ public class Semua extends javax.swing.JPanel {
         // TODO add your handling code here:
         int i = tabelProduk.getSelectedRow();
         model = (DefaultTableModel) tabelProduk.getModel();
-        txtNama.setText(model.getValueAt(i,1).toString());
-        txtHarga.setText(model.getValueAt(i,2).toString());
+        txtNama.setText(model.getValueAt(i, 1).toString());
+        txtHarga.setText(model.getValueAt(i, 2).toString());
         txtRuangan.setText(listProduk.get(i).getRuangan());
         txtWarna.setText(listProduk.get(i).getWarna());
         txtKeterangan.setText(listProduk.get(i).getKeterangan());
         txtMaterial.setText(listProduk.get(i).getMaterial());
-        txtStok.setText(model.getValueAt(i,3).toString());
+        txtStok.setText(model.getValueAt(i, 3).toString());
+        Object imageDataObj = model.getValueAt(i, 5);
+
+        if (imageDataObj != null && imageDataObj instanceof byte[]) {
+            byte[] imageData = (byte[]) imageDataObj;
+
+            // Convert the byte array to an ImageIcon
+            ImageIcon imageIcon = new ImageIcon(imageData);
+
+            // Scale the image to fit lblImage
+            Image scaledImage = imageIcon.getImage().getScaledInstance(lblGambar.getWidth(), lblGambar.getHeight(), Image.SCALE_SMOOTH);
+
+            // Create a new ImageIcon with the scaled image
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+
+            // Set the ImageIcon to lblImage
+            lblGambar.setIcon(scaledImageIcon);
+        } else {
+            // Handle the case where there is no image
+            System.out.println("No image");
+            lblGambar.setIcon(null); // Set lblImage to null or another default image
+        }
     }//GEN-LAST:event_tabelProdukMouseClicked
 
     private void txtStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStokActionPerformed
@@ -361,7 +394,7 @@ public class Semua extends javax.swing.JPanel {
         String dicari = txtPancarian.getText();
         String kategori = cmbKategori.getSelectedItem().toString();
         dtm.setRowCount(0);
-        
+
         listProduk = conProduk.findProdukByPencarian(kategori, dicari);
         data = new String[12];
         for (Produk prdk : listProduk) {
@@ -395,6 +428,7 @@ public class Semua extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblGambar;
     private javax.swing.JLabel lblRuangan;
     private javax.swing.JTable tabelProduk;
     private javax.swing.JTextField txtHarga;
