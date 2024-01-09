@@ -60,6 +60,7 @@ public class LamanKelola extends javax.swing.JFrame {
         loadData();
     }
 
+    
 //    public void close() {
 //        WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
 //        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
@@ -164,6 +165,7 @@ public class LamanKelola extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuLamanPelanggan = new javax.swing.JMenu();
         menuItemLamanPelanggan = new javax.swing.JMenuItem();
+        menuTransaksi = new javax.swing.JMenuItem();
         menuItemLogout = new javax.swing.JMenuItem();
 
         lbl_image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -310,6 +312,7 @@ public class LamanKelola extends javax.swing.JFrame {
         });
 
         lblGambar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblGambar.setPreferredSize(new java.awt.Dimension(136, 172));
 
         jDesktopPane1.setLayer(lblGambar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -317,17 +320,11 @@ public class LamanKelola extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblGambar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblGambar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblGambar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
 
         menuLamanPelanggan.setText("Menu");
@@ -344,6 +341,14 @@ public class LamanKelola extends javax.swing.JFrame {
             }
         });
         menuLamanPelanggan.add(menuItemLamanPelanggan);
+
+        menuTransaksi.setText("Laman Transaksi");
+        menuTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTransaksiActionPerformed(evt);
+            }
+        });
+        menuLamanPelanggan.add(menuTransaksi);
 
         menuItemLogout.setText("Logout");
         menuItemLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +367,7 @@ public class LamanKelola extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -387,42 +392,42 @@ public class LamanKelola extends javax.swing.JFrame {
                                         .addComponent(cmbRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnDelete)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSave))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMaterial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStok, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, Short.MAX_VALUE))
+                                    .addComponent(txtStok, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(txtPathGambar)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 107, Short.MAX_VALUE)
                                 .addComponent(btnUpload)))
                         .addGap(21, 21, 21)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtPancarian, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(txtPancarian, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel1)))
+                        .addComponent(btnDelete)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnUpdate)
+                        .addGap(73, 73, 73)
+                        .addComponent(btnSave)))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -438,8 +443,12 @@ public class LamanKelola extends javax.swing.JFrame {
                             .addComponent(btnCari)
                             .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDelete)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnSave)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -480,13 +489,8 @@ public class LamanKelola extends javax.swing.JFrame {
                                 .addGap(7, 7, 7)
                                 .addComponent(txtPathGambar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUpload)))
-                        .addGap(18, 27, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSave)
-                            .addComponent(btnDelete)
-                            .addComponent(btnUpdate))))
-                .addGap(30, 30, 30))
+                                .addComponent(btnUpload)))))
+                .addGap(24, 24, Short.MAX_VALUE))
         );
 
         pack();
@@ -513,6 +517,7 @@ public class LamanKelola extends javax.swing.JFrame {
         keterangan = txtAKeterangan.getText();
         material = txtMaterial.getText();
         stok = Integer.parseInt(txtStok.getText());
+     
 
         Produk produk = new Produk();
         produk.setId(id);
@@ -627,8 +632,7 @@ public class LamanKelola extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPathGambarActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
+  JFileChooser fileChooser = new JFileChooser();
         fileChooser.showOpenDialog(null);
         File file = fileChooser.getSelectedFile();
         namaFileGambar = file.getAbsolutePath();
@@ -637,7 +641,7 @@ public class LamanKelola extends javax.swing.JFrame {
         try {
             File image = new File(namaFileGambar);
 
-            BufferedImage thumbnail = Thumbnails.of(image).size(180, 220).asBufferedImage();
+            BufferedImage thumbnail = Thumbnails.of(image).size(136, 172).asBufferedImage();
 
             ByteArrayOutputStream os = new ByteArrayOutputStream();
 
@@ -709,6 +713,12 @@ public class LamanKelola extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCariMouseClicked
 
+    private void menuTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTransaksiActionPerformed
+        // TODO add your handling code here:
+        new TransaksiForm().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuTransaksiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -772,6 +782,7 @@ public class LamanKelola extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemLamanPelanggan;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenu menuLamanPelanggan;
+    private javax.swing.JMenuItem menuTransaksi;
     private javax.swing.JTable tabelProduk;
     private javax.swing.JTextArea txtAKeterangan;
     private javax.swing.JTextField txtHarga;
